@@ -4,7 +4,7 @@ public class GuessRandomNumber{
     public static void main (String[] args){
         Scanner scan = new Scanner(System.in);
 
-        int max = 1000, min = 1, range = max - min + 1;
+        int max = 10, min = 1, range = max - min + 1;
 
         int randomNumberOne = (int) (Math.random() * range) + min;
         int randomNumberTwo = (int) (Math.random() * range) + min;
@@ -22,11 +22,12 @@ public class GuessRandomNumber{
         System.out.print("Введите второе число: ");
         int secondNumber = scan.nextInt();
 
-        boolean verifyOne = randomNumberOne == firstNumber;
-        boolean verifyTwo = randomNumberTwo == secondNumber;
+        boolean result = (randomNumberOne == firstNumber && randomNumberTwo == secondNumber) || (randomNumberOne == secondNumber && randomNumberTwo == firstNumber);
+         ;
 
         System.out.println("\nВы отгадали число?");
-        System.out.println("Первое число: " + verifyOne);
-        System.out.println("Второе число: " + verifyTwo);
+        System.out.println(result);
+
+        System.out.printf("\nПервое число: %d \nВторое число : %d\n", randomNumberOne, randomNumberTwo);
     }
 }
