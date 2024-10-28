@@ -14,10 +14,10 @@ public class Quen{
         System.out.print("y координата фигуры: ");
         yFigure = scan.nextInt();
 
-        boolean result = ((xQuen + yQuen == xFigure + yFigure) || (xFigure - yFigure == xQuen - yQuen)) || ((xQuen == xFigure) || (yFigure == yQuen));
+        //boolean result = ((xQuen + yQuen == xFigure + yFigure) || (xFigure - yFigure == xQuen - yQuen)) || ((xQuen == xFigure) || (yFigure == yQuen));
 
         boolean quen = (Math.abs(xQuen - yQuen) == Math.abs(xFigure - yFigure)) || ((xQuen == xFigure) || (yFigure == yQuen));
 
-        System.out.println(result);
+        System.out.println(quen);
     }
 }

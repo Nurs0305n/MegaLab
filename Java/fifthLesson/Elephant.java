@@ -14,10 +14,10 @@ public class Elephant{
         System.out.print("y координата фигуры: ");
         yFigure = scan.nextInt();
 
-        boolean result = (xElephant + yElephant == xFigure + yFigure) || (xFigure - yFigure == xElephant - yElephant);
+        //boolean result = (xElephant + yElephant == xFigure + yFigure) || (xFigure - yFigure == xElephant - yElephant);
 
         boolean elephant = (Math.abs(xElephant - yElephant) == Math.abs(xFigure - yFigure));
 
-        System.out.println(result);
+        System.out.println(elephant);
     }
 }

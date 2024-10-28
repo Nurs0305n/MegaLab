@@ -14,9 +14,9 @@ public class Horse{
         System.out.print("y координата фигуры: ");
         yFigure = scan.nextInt();
 
-        boolean result = (xHorse -1 == xFigure || xHorse + 1 == xFigure) && (yHorse - 2 == yFigure || yHorse + 2 == yFigure) || (yHorse -1 == yFigure || yHorse + 1 == yFigure) && (xHorse - 2 == xFigure || xHorse + 2 == xFigure);
+        //boolean result = (xHorse -1 == xFigure || xHorse + 1 == xFigure) && (yHorse - 2 == yFigure || yHorse + 2 == yFigure) || (yHorse -1 == yFigure || yHorse + 1 == yFigure) && (xHorse - 2 == xFigure || xHorse + 2 == xFigure);
         
-        boolean horse = (Math.abs(xHorse - xFigure) == 1 && Math.abs(yHorse - yFigure) == 2) || (Math.abs(xHorse - xFigure) == 2 && Math.abs(yHorse - yFigure) == 1)
-        System.out.println(result);
+        boolean horse = (Math.abs(xHorse - xFigure) == 1 && Math.abs(yHorse - yFigure) == 2) || (Math.abs(xHorse - xFigure) == 2 && Math.abs(yHorse - yFigure) == 1);
+        System.out.println(horse);
     }
 }
