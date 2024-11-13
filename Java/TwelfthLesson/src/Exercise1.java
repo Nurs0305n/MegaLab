@@ -8,7 +8,7 @@ public class Exercise1 {
 
         do {
             userNumber = scanner.nextInt();
-            if (userNumber  == identicalNumber)
+            if (userNumber == identicalNumber)
                 countIdenticalNumber++;
             else {
                 identicalNumber = userNumber;
@@ -17,7 +17,7 @@ public class Exercise1 {
 
             if (countIdenticalNumber > maxCountIdenticalNumber)
                 maxCountIdenticalNumber = countIdenticalNumber;
-        }while (userNumber != 0);
+        } while (userNumber != 0);
 
         System.out.println(maxCountIdenticalNumber);
     }
