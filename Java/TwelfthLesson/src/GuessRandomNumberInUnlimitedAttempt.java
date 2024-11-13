@@ -14,6 +14,14 @@ public class GuessRandomNumberInUnlimitedAttempt {
                 System.out.println("Ваше число больше");
             else if (userNumber < randomNumber)
                 System.out.println("Ваше число меньше");
+            else
+                System.out.println("Вы угадали цифру");
+
+            if (userNumber == 0){
+                System.out.println("Остановка программы");
+                break;
+            }
+
         }while (userNumber != randomNumber);
     }
 }

@@ -7,6 +7,7 @@ public class Exercise1 {
         int userNumber, countIdenticalNumber = 1, identicalNumber = 0, maxCountIdenticalNumber = 0;
 
         do {
+            System.out.print("Введите цифру: ");
             userNumber = scanner.nextInt();
             if (userNumber == identicalNumber)
                 countIdenticalNumber++;
@@ -19,6 +20,6 @@ public class Exercise1 {
                 maxCountIdenticalNumber = countIdenticalNumber;
         } while (userNumber != 0);
 
-        System.out.println(maxCountIdenticalNumber);
+        System.out.println("Максимальное число поледовательных одинаковых цифр: " + maxCountIdenticalNumber);
     }
 }

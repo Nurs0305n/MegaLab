@@ -9,7 +9,7 @@ public class BankInterest {
         moneyAmount = scanner.nextInt();
         System.out.print("Проценты: ");
         interest = scanner.nextInt();
-        System.out.print("Сколько надо: ");
+        System.out.print("Сколько денег надо получить: ");
         needMoneyAmount = scanner.nextInt();
 
         while (moneyAmount < needMoneyAmount){
