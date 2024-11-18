@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Wages{
   public static void main (String args[]){
     Scanner scan = new Scanner(System.in);
@@ -22,5 +24,6 @@ public class Wages{
   //Здесь ЗП – заработная плата по окладу
   //ЗП = О/Дк * Дф + П – Н — У
     int wages = (int) ((double)(salary / allWorkDay) * workDays + awards - task - fines);
+    System.out.println("Заработная плата: " + wages);
   }
 }
