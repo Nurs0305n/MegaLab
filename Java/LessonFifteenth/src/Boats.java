@@ -1,4 +1,4 @@
-public class SecondExample {
+public class Boats {
     public static void main(String[] args) {
         int x, y, move, lastMove = 0, moveCount = 0;
         int[][] field = new int[10][10];
@@ -6,43 +6,43 @@ public class SecondExample {
         y = (int) (Math.random() * 10);
         field[x][y] = 1;
 
-        while (moveCount < 3) {
+        while (moveCount < 9) {
             move = (int) (Math.random() * 4 + 1);
 
             int newX = x, newY = y;
 
-            switch (move){
+            // Выбираем новое направление
+            switch (move) {
                 case 1:
-                    newX++;
+                    newX++;// вниз
                     break;
                 case 2:
-                    newY++;
+                    newY++;// вправо
                     break;
                 case 3:
-                    newY--;
+                    newY--; // влево
                     break;
                 case 4:
-                    newX--;
+                    newX--; // вверх
                     break;
             }
 
-
+            // Проверяем корректность хода
             if (move != lastMove && newX >= 0 && newX < 10 && newY >= 0 && newY < 10) {
-                if (field[newX][newY] != 1) {
+                if (field[newX][newY] == 0) {
                     x = newX;
                     y = newY;
                     field[x][y] = 1;
                     moveCount++;
                 }
-                lastMove = Math.abs(move - 5);
+                lastMove = (move + 2) % 4 + 1; // Обратное направление
             }
         }
 
-        for (int i = 0; i < field.length; i++) {
-            for (int j = 0; j < field[i].length; j++) {
-                //System.out.print(" nums[" + i + "][" + j + "] = " + field[i][j]);
-                System.out.print(field[i][j] + " ");
-
+        // Вывод игрового поля
+        for (int[] row : field) {
+            for (int cell : row) {
+                System.out.print(cell + " ");
             }
             System.out.println();
         }
