@@ -6,26 +6,16 @@ public class SecondExample {
         y = (int) (Math.random() * 10);
         field[x][y] = 1;
 
-        while (moveCount < 3) {
+        while (moveCount < 7) {
             move = (int) (Math.random() * 4 + 1);
-
             int newX = x, newY = y;
 
-            switch (move){
-                case 1:
-                    newX++;
-                    break;
-                case 2:
-                    newY++;
-                    break;
-                case 3:
-                    newY--;
-                    break;
-                case 4:
-                    newX--;
-                    break;
+            switch (move) {
+                case 1 -> newX++;
+                case 2 -> newY++;
+                case 3 -> newY--;
+                case 4 -> newX--;
             }
-
 
             if (move != lastMove && newX >= 0 && newX < 10 && newY >= 0 && newY < 10) {
                 if (field[newX][newY] != 1) {
