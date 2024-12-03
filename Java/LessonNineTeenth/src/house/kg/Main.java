@@ -8,7 +8,7 @@ import house.kg.models.realEstate.*;
 
 public class Main {
     public static void main(String[] args) {
-        Client client = new Client("Этажи", "+996 995 88-10-41", "etahi@mail.ru");
+        Client client = new Client("Этажи", "+996 995 88-10-41", "etaji@mail.ru");
 
         DealType dealType = new DealType("Купить");
 
