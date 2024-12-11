@@ -42,10 +42,10 @@ public class Person {
 
     public void info(){
         System.out.printf("""
-                First name: %s,
-                Last name: %s,
-                Age: %d,
-                Sex: %b
-                """);
+                Имя: %s,
+                Фамилия : %s,
+                Возраст : %d,
+                Пол : %b
+                """, firstName, lastName, age, sex);
     }
 }

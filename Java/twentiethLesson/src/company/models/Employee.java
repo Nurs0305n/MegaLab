@@ -13,18 +13,18 @@ public class Employee extends Person{
     }
 
     public float getSalary() {
-        return salary;
+        return (float) salary;
     }
 
     public void setSalary(float salary) {
         this.salary = salary;
     }
 
-    public void info(){
+    public void showInfo(){
         super.info();
         System.out.printf("""
-                Position: %s,
-                Salary: %f
-                """);
+                Должность : %s,
+                Зарплата : %f
+                """, position, salary);
     }
 }
