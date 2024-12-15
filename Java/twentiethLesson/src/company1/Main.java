@@ -1,6 +1,6 @@
-package company;
+package company1;
 
-import company.models.Employee;
+import company1.models.Employee;
 
 import java.util.Scanner;
 
@@ -49,7 +49,7 @@ public class Main {
                 case 3:
                     System.out.println("Введите индекс: ");
                     int index = scanner.nextInt();
-                    showInfoEmployee(index);
+                    showInfoEmployee();
                     break;
                 case 4:
                     showInfoEmployees();
@@ -92,29 +92,19 @@ public class Main {
         employeeCount++;
     }
 
-    private static void deleteEmployee (int index){
-        if (employeeCount == 1 && index == 0) {
-            employees[index] = null;
-            employeeCount--;
-        }
-        else if (index < employeeCount && employeeCount > 1){
+    private static void deleteEmployee (int index) {
         for (int i = index; i < employeeCount - 1; i++) {
-            employees[i] = employees[i+1];
+            employees[i] = employees[i + 1];
         }
-            employeeCount--;
-        } else
-            System.out.println("Неизвестное индекс!");
+        employeeCount--;
     }
 
     private static void deleteEmployee (String firstName, String lastName){
         if (employeeCount > 0){
             for (int i = 0; i < employeeCount; i++) {
-                if (employees[i].getFirstName().equals(firstName) && employees[i].getLastName().equals(lastName)) {
+                if (employees[i].getFirstName().equalsIgnoreCase(firstName) && employees[i].getLastName().equalsIgnoreCase(lastName)) {
                     for (int j = i; j < employeeCount; j++) {
-                        if (j < employees.length - 2){
                             employees[j] = employees[j + 1];
-                        }else
-                            employees[j] = null;
                     }
                     employeeCount--;
                 } else if (i == employeeCount - 1) {
@@ -125,12 +115,25 @@ public class Main {
             System.out.println("Список сотрудников пуст!");
     }
 
-    private static void showInfoEmployee(int index){
-        if (index < employeeCount)
-            employees[index].showInfo();
-        else
-            System.out.println("По данному индексу нет сотрудника!");
+    private static void showInfoEmployee(){
+        System.out.print("""
+                Поиск по:
+                1. Индекс
+                2. Имя
+                """);
+        int choice = scanner.nextInt();
+         if (choice == 1){
+             System.out.println("Введите индекс: ");
+             int index = scanner.nextInt();
+            if (index < employeeCount)
+                employees[index].showInfo();
+            else
+                System.out.println("По данному индексу нет сотрудника!");
+        } else if (choice == 2){
+
+         }
     }
+
 
     private static void showInfoEmployees(){
         if (employeeCount != 0){
