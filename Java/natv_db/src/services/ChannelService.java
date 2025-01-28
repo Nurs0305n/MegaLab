@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ChannelService {
-//    private final String url = "jdbc:sqlite:/home/nurs/MegaLab/Databases/natv/natv.db"; //Linux
-    private final String url = "jdbc:sqlite:D:/Java/Lessons/MegaLab/Databases/natv/natv.db"; //Windows
+    private final String url = "jdbc:sqlite:/home/nurs/MegaLab/Databases/natv/natv.db"; //Linux
+//    private final String url = "jdbc:sqlite:D:/Java/Lessons/MegaLab/Databases/natv/natv.db"; //Windows
 
     public ChannelService() throws SQLException {
     }
@@ -45,6 +45,6 @@ public class ChannelService {
         channels.add(channel);
     }
     connection.close();
-        return channels;
+    return channels;
     }
 }
