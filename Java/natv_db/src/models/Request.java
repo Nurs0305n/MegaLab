@@ -10,11 +10,12 @@ public class Request {
     private String email;
     private List<ChannelRequests> channelRequests;
 
-    public Request(String text, String clientName, String phoneNumber, String email) {
-        this.text = text;
-        this.clientName = clientName;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
+    public List<ChannelRequests> getChannelRequests() {
+        return channelRequests;
+    }
+
+    public void setChannelRequests(List<ChannelRequests> channelRequests) {
+        this.channelRequests = channelRequests;
     }
 
     public int getId() {

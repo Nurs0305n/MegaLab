@@ -2,46 +2,56 @@ import models.*;
 import services.*;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
-
-        ChannelService
-        Channel channel = new Channel("8", 1);
-
+    public static void main(String[] args) throws SQLException, ParseException {
         ChannelService channelService = new ChannelService();
-        try {
-            channelService.addNewChannel(channel);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+
+        List<Channel> channels = channelService.getChannels();
+
+        for (Channel channel: channels){
+            System.out.printf("id: %d, name: %s, price per symbol: %.2f,%n", channel.getId(), channel.getName(), channel.getPricePerSymbol());
         }
 
-        Discount discount = new Discount(5, 3, channel.getId());
-        Discount discount1 = new Discount(10, 10, channel.getId());
-        Discount discount2 = new Discount(15, 15, channel.getId());
+        String text = "Продается ноутбук.";
 
-        List<Discount> discounts = new ArrayList<>();
-        discounts.add(discount);
-        discounts.add(discount1);
-        discounts.add(discount2);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
 
+        List<Date> ntvDates = new ArrayList<>();
+        ntvDates.add(sdf.parse("01.02.2025"));
+        ntvDates.add(sdf.parse("02.02.2025"));
+        ntvDates.add(sdf.parse("03.02.2025"));
+        ntvDates.add(sdf.parse("04.02.2025"));
 
-        DiscountService discountService = new DiscountService();
-        try {
-            discountService.addDiscountsForChannel(discounts);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-//        Scanner scanner = new Scanner(System.in);
-//        while (true){
-//            System.out.println("Выберите действие" +
-//                    "1. Создать канал. ");
-//            int mode = scanner.nextInt();
-//
-//            switch (mode){
-//
-//            }
+        ChannelRequests ntvChannelRequest = new ChannelRequests(1, ntvDates);
+
+        List<Date> eltrDates = new ArrayList<>();
+        eltrDates.add(sdf.parse("29.01.2025"));
+        eltrDates.add(sdf.parse("30.01.2025"));
+        eltrDates.add(sdf.parse("31.01.2025"));
+        eltrDates.add(sdf.parse("01.02.2025"));
+        eltrDates.add(sdf.parse("02.02.2025"));
+
+        ChannelRequests eltrChannelRequest = new ChannelRequests(3, eltrDates);
+
+        List<ChannelRequests> requestsChannels = new ArrayList<>();
+        requestsChannels.add(ntvChannelRequest);
+        requestsChannels.add(eltrChannelRequest);
+
+        Request request = new Request();
+        request.setClientName("Nurs");
+        request.setEmail("nurs@gmail.com");
+        request.setPhoneNumber("0500230503");
+        request.setText(text);
+        request.setChannelRequests(requestsChannels);
+
+        RequestService requestService = new RequestService();
+
+        requestService.createRequest(request);
     }
 }

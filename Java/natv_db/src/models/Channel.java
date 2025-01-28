@@ -10,6 +10,12 @@ public class Channel {
         this.pricePerSymbol = pricePerSymbol;
     }
 
+    public Channel(Integer id, String name, double pricePerSymbol) {
+        this.id = id;
+        this.name = name;
+        this.pricePerSymbol = pricePerSymbol;
+    }
+
     public Integer getId() {
         return id;
     }
