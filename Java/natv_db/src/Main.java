@@ -1,5 +1,5 @@
 import models.*;
-import services.three.*;
+import services.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -8,7 +8,8 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        Channel channel = new Channel("7", 1);
+        ChannelService
+        Channel channel = new Channel("8", 1);
 
         ChannelService channelService = new ChannelService();
         try {

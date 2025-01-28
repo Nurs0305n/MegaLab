@@ -1,10 +1,16 @@
 package services;
 
 import models.Channel;
+import models.ChannelRequests;
 
 import java.sql.*;
+import java.util.List;
 
 public class ChannelService {
+    private final String url = "jdbc:sqlite:/home/nurs/MegaLab/Databases/natv/natv.db";
+
+    public ChannelService() throws SQLException {
+    }
 
     public void addNewChannel(Channel channel) throws SQLException {
         String url = "jdbc:sqlite:/home/nurs/MegaLab/Databases/natv/natv.db";
@@ -24,5 +30,12 @@ public class ChannelService {
         int channelId = resultSet.getInt(1);
         channel.setId(channelId);
         connection.close();
+    }
+
+    public List<Channel> getChannels() throws SQLException {
+    Connection connection = DriverManager.getConnection(url);
+    PreparedStatement ps = connection.prepareStatement("select channel_id, name, price_per_percent from channels");
+    ResultSet resultSet = ps.executeQuery();
+        return List.of();
     }
 }
