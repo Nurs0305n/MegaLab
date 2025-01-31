@@ -14,6 +14,13 @@ public class Lesson {
         this.students = students;
     }
 
+    public Lesson(Integer id, String name, Teacher teacher, List<Student> students) {
+        this.id = id;
+        this.name = name;
+        this.teacher = teacher;
+        this.students = students;
+    }
+
     public Integer getId() {
         return id;
     }

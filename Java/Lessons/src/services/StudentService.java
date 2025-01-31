@@ -1,5 +1,6 @@
 package services;
 
+import config.DbConfig;
 import models.Student;
 
 import java.sql.*;
@@ -7,10 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentService {
-    private String url = "jdbc:sqlite:/home/nurs/MegaLab/Databases/lessons/lessons_db.db";
 
-    public void create(Student student) throws SQLException {
-        Connection connection = DriverManager.getConnection(url);
+    public void createStudent(Student student) throws SQLException {
+        Connection connection = DriverManager.getConnection(DbConfig.url);
         PreparedStatement ps = connection.prepareStatement("insert into students(first_name, last_name, email) values (?,?,?)");
         ps.setString(1, student.getFirstName());
         ps.setString(2, student.getLastName());
@@ -27,9 +27,9 @@ public class StudentService {
         connection.close();
     }
 
-    public List<Student> read() throws SQLException {
+    public List<Student> getStudents() throws SQLException {
         List<Student>  students = new ArrayList<>();
-        Connection connection = DriverManager.getConnection(url);
+        Connection connection = DriverManager.getConnection(DbConfig.url);
         PreparedStatement ps = connection.prepareStatement("select id, first_name, last_name, email from students");
         ResultSet resultSet = ps.executeQuery();
         
@@ -47,8 +47,8 @@ public class StudentService {
         return  students;
     }
 
-    public void update(Student student) throws SQLException {
-        Connection connection = DriverManager.getConnection(url);
+    public void updateStudent(Student student) throws SQLException {
+        Connection connection = DriverManager.getConnection(DbConfig.url);
         PreparedStatement ps = connection.prepareStatement("update students set first_name = ?, last_name = ?, email = ?" +
                 "where id = ?");
         ps.setString(1, student.getFirstName());

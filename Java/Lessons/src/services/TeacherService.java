@@ -1,5 +1,6 @@
 package services;
 
+import config.DbConfig;
 import models.Teacher;
 
 import java.sql.*;
@@ -7,10 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TeacherService {
-    private String url = "jdbc:sqlite:/home/nurs/MegaLab/Databases/lessons/lessons_db.db";
-
-    public void create(Teacher teacher) throws SQLException {
-        Connection connection = DriverManager.getConnection(url);
+    public void createTeacher(Teacher teacher) throws SQLException {
+        Connection connection = DriverManager.getConnection(DbConfig.url);
         PreparedStatement ps = connection.prepareStatement("insert into teachers(first_name, last_name) values (?,?)");
         ps.setString(1, teacher.getFirstName());
         ps.setString(2, teacher.getLastName());
@@ -26,9 +25,9 @@ public class TeacherService {
         connection.close();
     }
 
-    public List<Teacher> read() throws SQLException {
+    public List<Teacher> getTeachers() throws SQLException {
         List<Teacher>  teachers = new ArrayList<>();
-        Connection connection = DriverManager.getConnection(url);
+        Connection connection = DriverManager.getConnection(DbConfig.url);
         PreparedStatement ps = connection.prepareStatement("select id, first_name, last_name from teachers");
         ResultSet resultSet = ps.executeQuery();
 
@@ -41,8 +40,8 @@ public class TeacherService {
         return teachers;
     }
 
-    public void update(Teacher teacher) throws SQLException {
-        Connection connection = DriverManager.getConnection(url);
+    public void updateTeacher(Teacher teacher) throws SQLException {
+        Connection connection = DriverManager.getConnection(DbConfig.url);
         PreparedStatement ps = connection.prepareStatement("update teachers set first_name = ?, last_name = ? where id = ?");
         ps.setString(1, teacher.getFirstName());
         ps.setString(2, teacher.getLastName());
@@ -52,8 +51,8 @@ public class TeacherService {
         connection.close();
     }
 
-    public void deleteOnId(Teacher teacher) throws SQLException {
-        Connection connection = DriverManager.getConnection(url);
+    public void deleteTeacherOnId(Teacher teacher) throws SQLException {
+        Connection connection = DriverManager.getConnection(DbConfig.url);
         PreparedStatement ps = connection.prepareStatement("delete from teachers " +
                 "where id = ?");
         ps.setInt(1, teacher.getId());
@@ -62,8 +61,8 @@ public class TeacherService {
         connection.close();
     }
 
-    public void deleteAll() throws SQLException {
-        Connection connection = DriverManager.getConnection(url);
+    public void deleteAllTeachers() throws SQLException {
+        Connection connection = DriverManager.getConnection(DbConfig.url);
         PreparedStatement ps = connection.prepareStatement("delete from teachers");
         ps.executeUpdate();
         connection.close();
