@@ -5,23 +5,10 @@ import java.util.List;
 public class Flat {
     private Integer id;
     private Integer roomsCount;
-    private Integer area;
+    private Double area;
     private Integer pricePerRent;
     private Region region;
     private List<Resident> residents;
-
-    public Flat(Integer roomsCount, Integer area, Integer pricePerRent) {
-        this.roomsCount = roomsCount;
-        this.area = area;
-        this.pricePerRent = pricePerRent;
-    }
-
-    public Flat(Integer id, Integer roomsCount, Integer area, Integer pricePerRent) {
-        this.id = id;
-        this.roomsCount = roomsCount;
-        this.area = area;
-        this.pricePerRent = pricePerRent;
-    }
 
     public Integer getId() {
         return id;
@@ -39,11 +26,11 @@ public class Flat {
         this.roomsCount = roomsCount;
     }
 
-    public Integer getArea() {
+    public Double getArea() {
         return area;
     }
 
-    public void setArea(Integer area) {
+    public void setArea(Double area) {
         this.area = area;
     }
 
@@ -53,6 +40,14 @@ public class Flat {
 
     public void setPricePerRent(Integer pricePerRent) {
         this.pricePerRent = pricePerRent;
+    }
+
+    public Region getRegion() {
+        return region;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
     }
 
     public List<Resident> getResidents() {
