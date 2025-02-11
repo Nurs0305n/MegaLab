@@ -2,6 +2,6 @@ package ecxeptions;
 
 public class TariffNotExist extends RuntimeException {
     public TariffNotExist() {
-        System.out.println("Tariff Not Exist");
+        System.out.println("Такого тарифа нет!");
     }
 }

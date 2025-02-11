@@ -3,15 +3,17 @@ package db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 public interface DbHelper<T, I> {
-    String url = "jdbc:sqlite:/root/nurs/MegaLab/Databases/parking_service.db";
+    String url = "jdbc:sqlite:/home/nurs/MegaLab/Databases/parking.db"; //Linux
     default Connection connect() throws SQLException {
         return DriverManager.getConnection(url);
     }
 
     void create(T t);
     void update(T t);
-    void delete(T t);
+    List<T> getAll();
+    void delete(I id);
     T getById(I id);
 }
