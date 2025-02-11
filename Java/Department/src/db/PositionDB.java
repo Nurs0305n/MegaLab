@@ -1,5 +1,6 @@
 package db;
 
+import ecxeptions.PositionNotExist;
 import models.Position;
 
 import java.sql.Connection;
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PositionDB implements DbHelper<Position, Integer>{
+    private final DepartmentDB departmentDB = new DepartmentDB();
     @Override
     public void insert(Position position) {
         try {
@@ -21,7 +23,7 @@ public class PositionDB implements DbHelper<Position, Integer>{
             ps.executeUpdate();
 
             ps.close();
-            close(connection);
+            connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -39,7 +41,7 @@ public class PositionDB implements DbHelper<Position, Integer>{
             ps.executeUpdate();
 
             ps.close();
-            close(connection);
+            connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -55,13 +57,13 @@ public class PositionDB implements DbHelper<Position, Integer>{
             ResultSet resultSet = ps.executeQuery();
 
             while(resultSet.next()){
-//                Position position = new Position(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getDouble("max_salary"), resultSet.getInt("deparmet_id"));
-//                positions.add(position);
+                Position position = new Position(resultSet.getInt("id"), resultSet.getString("name"), resultSet.getDouble("max_salary"), departmentDB.getById(resultSet.getInt("department_id")));
+                positions.add(position);
             }
 
             resultSet.close();
             ps.close();
-            close(connection);
+            connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -78,7 +80,7 @@ public class PositionDB implements DbHelper<Position, Integer>{
             ps.executeUpdate();
 
             ps.close();
-            close(connection);
+            connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -86,16 +88,26 @@ public class PositionDB implements DbHelper<Position, Integer>{
 
     @Override
     public Position getById(Integer id) {
+        Position position = null;
         try {
             Connection connection = connect();
             PreparedStatement ps = connection.prepareStatement("select id, name, max_salary, department_id from positions where id = ?");
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
-            if (rs.next()){
-//                Position position = new Position(rs.getInt("id"), rs.getString("name"), rs.getDouble("max_salary"), rs.getInt("department_id"));
-            }
+            if (rs.next())
+                position = new Position(rs.getInt("id"), rs.getString("name"), rs.getDouble("max_salary"), departmentDB.getById(rs.getInt("department_id")));
+
+
+            rs.close();
+            ps.close();
+            connection.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return null;
+
+        if (position != null)
+            return position;
+        else
+            throw new PositionNotExist();
     }
 }
