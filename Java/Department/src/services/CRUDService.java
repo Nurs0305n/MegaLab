@@ -8,4 +8,5 @@ public interface CRUDService<T, I> {
     void update(T t);
     List<T> getList();
     void delete(I id);
+
 }
