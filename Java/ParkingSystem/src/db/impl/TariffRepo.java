@@ -1,15 +1,15 @@
-package db;
+package db.impl;
 
+import db.DbHelper;
 import ecxeptions.TariffNotExist;
 import ecxeptions.TariffsListEmpty;
 import models.Tariff;
-import services.TariffService;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TariffDb implements DbHelper<Tariff, Integer> {
+public class TariffRepo implements DbHelper<Tariff, Integer> {
     public Tariff getTariffByMinute(int minute) {
         Tariff tariff = null;
         try {
@@ -30,7 +30,7 @@ public class TariffDb implements DbHelper<Tariff, Integer> {
             throw new RuntimeException(e);
         }
 
-        if (tariff.id() != 0)
+        if (tariff != null)
             return tariff;
         else
             throw new TariffNotExist();

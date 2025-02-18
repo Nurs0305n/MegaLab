@@ -1,5 +1,6 @@
-package db;
+package db.impl;
 
+import db.DbHelper;
 import ecxeptions.CarNotExist;
 import ecxeptions.CarsListEmpty;
 import models.Car;
@@ -11,7 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarDb implements DbHelper<Car, Integer>{
+public class CarRepo implements DbHelper<Car, Integer> {
     @Override
     public void create(Car car) {
         try {

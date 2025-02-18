@@ -1,5 +1,5 @@
-import db.TariffDb;
-
+import java.sql.*;
+import java.util.Collection;
 import java.util.Date;
 
 public class Main {
@@ -7,6 +7,19 @@ public class Main {
         Date date = new Date(1739282052174L);
         String sDate = date.toString();
         System.out.println(date.toString());
-        System.out.println((new Date().getTime() - date.getTime()) / 1000 / 60);
+        System.out.println();
+
+        String text = "null1";
+        try {
+            Connection connection = DriverManager.getConnection("jdbc:sqlite:/home/nurs/MegaLab/Databases/parking.db");
+            PreparedStatement ps = connection.prepareStatement("select * from entries");
+            ResultSet rs = ps.executeQuery();
+            if (rs.next())
+                text = rs.getString("start_date");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println(text);
     }
 }

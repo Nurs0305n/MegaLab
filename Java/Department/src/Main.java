@@ -13,13 +13,13 @@ public class Main {
         PositionService positionService = new PositionService();
         EmployeeService employeeService = new EmployeeService();
 
-        Department department = new Department("IT", 10);
-        Position position = new Position("Development", 40000,department);
-        Employee employee = new Employee("Marlen", "Abdanbekov", 35000, position);
+//        Department department = new Department("Legal", 10);
+//        Position position = new Position("Layer", 45000,departmentService.getById(2));
+//        Employee employee = new Employee("Kudi", "Abdanbekov", 40000, positionService.getById(2));x
 
-        departmentService.create(department);
-        positionService.create(position);
-        employeeService.create(employee);
+//        departmentService.create(department);
+//        positionService.create(position);
+//        employeeService.create(employee);
 
         List<Department> departments =  departmentService.getList();
         List<Position> positions = positionService.getList();
@@ -34,6 +34,6 @@ public class Main {
         for (Employee item: employees)
             System.out.println(item.toString());
 
-        System.out.println(employee.position().department().name());
+//        System.out.println(employee.position().department().name());
     }
 }
