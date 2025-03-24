@@ -16,7 +16,7 @@ public class Voyage {
     private LocalDate sendDate;
     private LocalTime sendTime;
     @ManyToOne
-    @JoinColumn (name = "destination_locality_id")
+    @JoinColumn(name = "destination_locality_id")
     private Locality destinationLocality;
     @ManyToOne
     @JoinColumn(name = "starting_locality_id")
@@ -36,20 +36,20 @@ public class Voyage {
         Id = id;
     }
 
-    public LocalDate getLocalDate() {
+    public LocalDate getSendDate() {
         return sendDate;
     }
 
-    public void setLocalDate(LocalDate sendDate) {
-        this.sendDate = Voyage.this.sendDate;
+    public void setSendDate(LocalDate sendDate) {
+        this.sendDate = sendDate;
     }
 
-    public LocalTime getLocalTime() {
+    public LocalTime getSendTime() {
         return sendTime;
     }
 
-    public void setLocalTime(LocalTime sendTime) {
-        this.sendTime = Voyage.this.sendTime;
+    public void setSendTime(LocalTime sendTime) {
+        this.sendTime = sendTime;
     }
 
     public Locality getDestinationLocality() {
