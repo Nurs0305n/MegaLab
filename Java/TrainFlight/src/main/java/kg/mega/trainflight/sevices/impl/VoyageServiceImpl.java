@@ -44,4 +44,16 @@ public class VoyageServiceImpl implements VoyageService {
 
         return voyageCreateDto;
     }
+
+    @Override
+    public Voyage findById(long id) {
+        return voyageRepo.findById(id).orElseThrow();
+    }
+
+    @Override
+    public Voyage deleteById(long id) {
+        Voyage voyage = voyageRepo.findById(id).orElseThrow();
+        voyageRepo.delete(voyage);
+        return voyage;
+    }
 }

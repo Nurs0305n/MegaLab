@@ -1,5 +1,6 @@
 package kg.mega.trainflight.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -9,6 +10,8 @@ public class Carriage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private long carriageNumber;
+
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "carriage_type_id")
     private CarriageType carriageType;

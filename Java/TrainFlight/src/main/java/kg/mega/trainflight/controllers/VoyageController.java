@@ -4,6 +4,7 @@ import kg.mega.trainflight.models.Voyage;
 import kg.mega.trainflight.models.dto.VoyageCreateDto;
 import kg.mega.trainflight.repositories.VoyageRepo;
 import kg.mega.trainflight.sevices.VoyageService;
+import kg.mega.trainflight.sevices.impl.VoyageServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,9 +17,9 @@ import java.util.List;
 @RequestMapping("/api/voyage")
 public class VoyageController {
 
-    private final VoyageService voyageService;
+    private final VoyageServiceImpl voyageService;
 
-    public VoyageController(VoyageService voyageService) {
+    public VoyageController(VoyageServiceImpl voyageService) {
         this.voyageService = voyageService;
     }
 
@@ -42,8 +43,8 @@ public class VoyageController {
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable long id) {
-        
-        return voyageCreateDto
+        Voyage voyage = voyageService.deleteById(id);
+        return ResponseEntity.ok(voyage);
     }
 
 }

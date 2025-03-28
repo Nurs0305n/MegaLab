@@ -2,6 +2,8 @@ package kg.mega.trainflight.models;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "trains")
 public class Train {
@@ -13,6 +15,8 @@ public class Train {
     @ManyToOne
     @JoinColumn(name = "train_type_id")
     private TrainType trainType;
+    @OneToMany(mappedBy = "train")
+    List<Carriage> carriages;
 
     public Long getId() {
         return id;

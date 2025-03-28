@@ -9,4 +9,8 @@ public interface VoyageService {
     List<Voyage> getAll();
 
     VoyageCreateDto create(VoyageCreateDto voyageCreateDto);
+
+    Voyage findById(long id);
+
+    Voyage deleteById(long id);
 }
