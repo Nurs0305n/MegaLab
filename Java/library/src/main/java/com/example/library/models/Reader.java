@@ -12,4 +12,7 @@ public class Reader {
     String lastName;
     String address;
     String birthDate;
+    @OneToMany
+    @JoinColumn(name = "ticket_if")
+    private Ticket ticket;
 }

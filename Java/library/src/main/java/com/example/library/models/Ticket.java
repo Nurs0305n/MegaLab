@@ -1,5 +1,6 @@
 package com.example.library.models;
 
+import com.example.library.enums.TicketStatus;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -14,7 +15,4 @@ public class Ticket {
     LocalDate startDate;
     LocalDate endDate;
     TicketStatus ticketStatus;
-    @ManyToOne
-    Reader reader;
-
 }

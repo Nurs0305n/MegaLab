@@ -2,10 +2,13 @@ package com.example.library.models.dto;
 
 import java.time.LocalDate;
 
-public record ReaderCreateDto(
+public record ReaderDto(
+        Long id,
         String firstName,
         String lastName,
         String address,
-        LocalDate dateOfBirth
+        LocalDate dateOfBirth,
+        String ticketNumber,
+        LocalDate expireDate
 ) {
 }
