@@ -15,11 +15,14 @@ public interface BookMapper {
 
     BookMapper INSTANCE = Mappers.getMapper(BookMapper.class);
 
-    @Mapping(source = "bookCreateDto.price", target = "pricePerDay")
-
+    @Mapping(target = "pricePerDay", source = "bookCreateDto.price")
     Book toBook(BookCreateDto bookCreateDto, List<Author> authors);
 
     @Mapping(source = "pricePerDay", target = "price")
+    @Mapping(source = "id", target = "bookId")
+    @Mapping(source = "authors", target = "authorsDto")
     BookDto bookToBookDto(Book book);
+
+    List<BookDto> booksToBookDtos(List<Book> books);
 
 }

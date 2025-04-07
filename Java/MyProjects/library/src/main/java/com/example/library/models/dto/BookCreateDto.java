@@ -6,6 +6,7 @@ import java.util.List;
 
 public record BookCreateDto(
         String title,
+        double price,
         List<Long> authorsIds
 ) {
 }

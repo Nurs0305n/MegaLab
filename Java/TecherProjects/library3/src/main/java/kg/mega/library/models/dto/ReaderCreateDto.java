@@ -1,4 +1,4 @@
-package com.example.library.models.dto;
+package kg.mega.library.models.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

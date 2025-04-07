@@ -1,7 +1,7 @@
-package com.example.library.mappers;
+package kg.mega.library.mappers;
 
-import com.example.library.models.Author;
-import com.example.library.models.dto.AuthorDto;
+import kg.mega.library.models.Author;
+import kg.mega.library.models.dto.AuthorDto;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -14,12 +14,10 @@ public interface AuthorMapper {
 
     AuthorMapper INSTANCE = Mappers.getMapper(AuthorMapper.class);
 
-    @Mapping(source = "id", target = "authorId")
-    AuthorDto authorToAuthorDto(Author author);
-
-    @InheritInverseConfiguration
+    @Mapping(source = "authorId", target = "id")
     Author authorDtoToAuthor(AuthorDto authorDto);
 
-    List<AuthorDto> authorListToAuthorDtoList(List<Author> authors);
+    @Mapping(source = "id", target = "authorId")
+    AuthorDto authorToAuthorDto(Author author);
 
 }

@@ -4,11 +4,12 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.time.LocalDate;
 
-public record ReaderCreateDto(
+public record ReaderUpdateDto(
+        Long readerID,
         String firstName,
         String lastName,
         String address,
-        @JsonFormat(pattern = "dd.MM.yyyy")
+        @JsonFormat(pattern = "dd.MM.yyy")
         LocalDate dateOfBirth
 ) {
 }
